@@ -75,13 +75,14 @@ class ImagesViewModel : ViewModel() {
     /**
      * Fetching Images from system
      */
-    fun fetchingImages(activity: Activity?) {
+    fun fetchingImages(activity: Activity?,fromMediaObserver:Boolean = false) {
         val loadedImagesList = ArrayList<ImageItem>()
         val folderMap = HashMap<String, MutableList<ImageItem>>()
 
         if (!isImagesFetching) {
             isImagesFetching = true
-            if (isImagesListEmpty()) {
+            val check = if(fromMediaObserver) true else isImagesListEmpty()
+            if (check) {
                 val timeFormat = "dd,MMMM,yyyy"
                 activity?.let { mActivity ->
                     val uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -281,6 +282,14 @@ class ImagesViewModel : ViewModel() {
     fun getImagesFromFolder(folderName: String) = imagesFolderMap[folderName] ?: mutableListOf()
     private fun clearFolderMap() = imagesFolderMap.clear()
 
+    /**
+     * When images updated from external storage
+     * fetch again files
+     */
+
+    fun mediaObserve(activity: Activity?){
+        fetchingImages(activity,true)
+    }
 
     /**
      * Do yourself

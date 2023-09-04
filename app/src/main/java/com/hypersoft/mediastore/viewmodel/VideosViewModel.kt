@@ -77,13 +77,14 @@ class VideosViewModel : ViewModel() {
     /**
      * Fetching Videos from system
      */
-    fun fetchingVideos(activity: Activity?) {
+    fun fetchingVideos(activity: Activity?,fromMediaObserver:Boolean = false) {
         val loadedVideosList = ArrayList<VideoItem>()
         val folderMap = HashMap<String, MutableList<VideoItem>>()
 
         if (!isVideosFetching) {
             isVideosFetching = true
-            if (isVideosListEmpty()) {
+            val check = if(fromMediaObserver) true else isVideosListEmpty()
+            if (check) {
                 val timeFormat = "dd,MMMM,yyyy"
                 activity?.let { mActivity ->
                     val uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
@@ -309,6 +310,15 @@ class VideosViewModel : ViewModel() {
 
     fun getVideosFromFolder(folderName: String) = videoFolderMap[folderName] ?: mutableListOf()
     private fun clearFolderMap() = videoFolderMap.clear()
+
+    /**
+     * When videos updated from external storage
+     * fetch again files
+     */
+
+    fun mediaObserve(activity: Activity?){
+        fetchingVideos(activity,true)
+    }
 
 
     /**
