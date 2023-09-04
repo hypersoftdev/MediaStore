@@ -39,7 +39,6 @@
             android:layout_height="wrap_content"
             android:gravity="center|start"
             android:text="@{item.audioName}"
-            android:textColor="@color/black"
             android:textSize="16sp"
             android:maxLines="2"
             android:ellipsize="end"

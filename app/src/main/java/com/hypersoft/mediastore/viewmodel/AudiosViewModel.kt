@@ -28,7 +28,7 @@ import java.io.File
 
 class AudiosViewModel : ViewModel() {
 
-    private val AUDIO_CODE = 96
+    private val AUDIO_CODE = 66
 
     /**
      * Indicates whether audios files are currently being fetched or not.

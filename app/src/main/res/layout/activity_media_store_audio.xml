@@ -22,7 +22,6 @@
             android:id="@+id/pb_loading_audios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateTint="@color/black"
             app:layout_constraintStart_toStartOf="@+id/recyclerView_audios"
             app:layout_constraintEnd_toEndOf="@+id/recyclerView_audios"
             app:layout_constraintTop_toTopOf="@+id/recyclerView_audios"
@@ -35,14 +34,13 @@
             android:layout_height="wrap_content"
             android:text="No Audios Found"
             android:textSize="12sp"
-            android:textColor="@color/black"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="@+id/recyclerView_audios"
             app:layout_constraintEnd_toEndOf="@+id/recyclerView_audios"
             app:layout_constraintTop_toTopOf="@+id/recyclerView_audios"
             app:layout_constraintBottom_toBottomOf="@+id/recyclerView_audios"
             app:drawableTopCompat="@drawable/ic_audio_file"
-            app:drawableTint="@color/black" />
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

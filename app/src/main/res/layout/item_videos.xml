@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.hypersoft.mediastore.datamodel.VideoItem" />
+
+        <variable
+            name="itemClick"
+            type="com.hypersoft.mediastore.interfaces.OnVideoClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="15dp"
+        android:background="?selectableItemBackground"
+        android:onClick="@{() -> itemClick.onVideoClick(item)}"
+        >
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/iv_video"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:imagePath="@{item.videoPath}"
+            app:round="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_video_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:text="@{item.videoDurationTitle}"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:background="@drawable/bg_duration"
+            android:layout_margin="5dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:paddingVertical="3dp"
+            android:paddingHorizontal="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/iv_video"
+            app:layout_constraintBottom_toBottomOf="@id/iv_video"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="00:10:32" />
+
+        <TextView
+            android:id="@+id/tv_video_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:text="@{item.videoName}"
+            android:textSize="14sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:paddingHorizontal="5dp"
+            android:layout_marginVertical="5dp"
+            app:layout_constraintEnd_toEndOf="@id/iv_video"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_video"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Run Run Run" />
+
+        <TextView
+            android:id="@+id/tv_video_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:text="@{item.videoHeightTitle + ` | ` + item.videoSizeTitle}"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginVertical="5dp"
+            android:paddingHorizontal="5dp"
+            app:layout_constraintEnd_toEndOf="@id/iv_video"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_video_title"
+            tools:text="720p | 80MB" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
