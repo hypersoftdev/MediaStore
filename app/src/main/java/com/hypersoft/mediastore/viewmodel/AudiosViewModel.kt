@@ -83,14 +83,15 @@ class AudiosViewModel : ViewModel() {
     /**
      * Fetching Audio Files from system
      */
-    fun fetchingAudios(activity: Activity?) {
+    fun fetchingAudios(activity: Activity?,fromMediaObserver:Boolean = false) {
         val loadedAudiosList = ArrayList<AudioItem>()
         val folderMap = HashMap<String, MutableList<AudioItem>>()
         val albumMap = HashMap<String, MutableList<AudioItem>>()
 
         if (!isAudiosFetching) {
             isAudiosFetching = true
-            if (isAudiosListEmpty()) {
+            val check = if (fromMediaObserver) true else isAudiosListEmpty()
+            if (check) {
                 val timeFormat = "dd,MMMM,yyyy"
                 activity?.let { mActivity ->
                     val uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
@@ -319,6 +320,15 @@ class AudiosViewModel : ViewModel() {
      * Do other functionalities by yourself like folder
      */
     private fun clearAlbumMap() = audioAlbumMap.clear()
+
+    /**
+     * When Audio file updated from external storage
+     * fetch again files
+     */
+
+    fun mediaObserve(activity: Activity?){
+        fetchingAudios(activity,true)
+    }
 
 
     /**

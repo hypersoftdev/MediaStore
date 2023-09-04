@@ -2,6 +2,7 @@ package com.hypersoft.mediastore.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -11,6 +12,7 @@ import com.hypersoft.mediastore.databinding.ActivityMediaStoreAudioBinding
 import com.hypersoft.mediastore.datamodel.AudioItem
 import com.hypersoft.mediastore.di.DIComponent
 import com.hypersoft.mediastore.interfaces.OnAudioClickListener
+import com.hypersoft.mediastore.observers.MediaContentObserver
 
 class MediaStoreAudioActivity : AppCompatActivity(), OnAudioClickListener {
 
@@ -19,6 +21,8 @@ class MediaStoreAudioActivity : AppCompatActivity(), OnAudioClickListener {
     private val diComponent by lazy { DIComponent() }
     private val mAdapter by lazy { AdapterAudios(this) }
 
+    private lateinit var mediaContentObserver: MediaContentObserver
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMediaStoreAudioBinding.inflate(layoutInflater)
@@ -26,6 +30,15 @@ class MediaStoreAudioActivity : AppCompatActivity(), OnAudioClickListener {
 
         initRecyclerView()
         initViewModel()
+        initMediaObserver()
+    }
+
+    private fun initMediaObserver() {
+        mediaContentObserver = MediaContentObserver(contentResolver, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI) {
+            diComponent.audiosViewModel.mediaObserve(this)
+            Toast.makeText(this, "Data has been updated", Toast.LENGTH_SHORT).show()
+        }
+        mediaContentObserver.register()
     }
 
     @SuppressLint("SetTextI18n")
@@ -70,5 +83,10 @@ class MediaStoreAudioActivity : AppCompatActivity(), OnAudioClickListener {
 
     private fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaContentObserver.unregister()
     }
 }

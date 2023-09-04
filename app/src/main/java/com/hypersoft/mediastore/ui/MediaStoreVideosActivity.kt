@@ -2,6 +2,7 @@ package com.hypersoft.mediastore.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -11,6 +12,7 @@ import com.hypersoft.mediastore.databinding.ActivityMediaStoreVideosBinding
 import com.hypersoft.mediastore.datamodel.VideoItem
 import com.hypersoft.mediastore.di.DIComponent
 import com.hypersoft.mediastore.interfaces.OnVideoClickListener
+import com.hypersoft.mediastore.observers.MediaContentObserver
 
 class MediaStoreVideosActivity : AppCompatActivity(), OnVideoClickListener {
 
@@ -19,6 +21,8 @@ class MediaStoreVideosActivity : AppCompatActivity(), OnVideoClickListener {
     private val diComponent by lazy { DIComponent() }
     private val mAdapter by lazy { AdapterVideos(this) }
 
+    private lateinit var mediaContentObserver: MediaContentObserver
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMediaStoreVideosBinding.inflate(layoutInflater)
@@ -26,6 +30,15 @@ class MediaStoreVideosActivity : AppCompatActivity(), OnVideoClickListener {
 
         initRecyclerView()
         initViewModel()
+        initMediaObserver()
+    }
+
+    private fun initMediaObserver() {
+        mediaContentObserver = MediaContentObserver(contentResolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI) {
+            diComponent.videosViewModel.mediaObserve(this)
+            Toast.makeText(this, "Data has been updated", Toast.LENGTH_SHORT).show()
+        }
+        mediaContentObserver.register()
     }
 
     @SuppressLint("SetTextI18n")
@@ -70,5 +83,10 @@ class MediaStoreVideosActivity : AppCompatActivity(), OnVideoClickListener {
 
     private fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaContentObserver.unregister()
     }
 }
