@@ -1,6 +1,5 @@
 package com.hypersoft.mediastore.adapters
 
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.widget.ImageView
 import androidx.constraintlayout.utils.widget.ImageFilterView
@@ -61,7 +60,7 @@ fun ImageFilterView.setImageFromPath(imagePath:String) {
  */
 
 @BindingAdapter("imageUri")
-fun ImageView.setImageFromUri(imageUri: Uri?) {
+fun ImageView.setImageFromUri(imageUri: Uri) {
     Glide
         .with(this)
         .load(imageUri)
@@ -80,20 +79,5 @@ fun ImageView.setImageFromFilePath(imageFilePath: File) {
     Glide
         .with(this)
         .load(imageFilePath.toString())
-        .into(this)
-}
-
-/**
- * @param: imageDrawable -> Set image drawable object for this (e.g. Drawable)
- *  Syntax:
- *      xml     -> app:imageDrawable="@{@drawable/img_dummy}"
- *      kotlin  -> binding.imageView.setImageFromDrawable(Drawable)
- */
-
-@BindingAdapter("imageDrawable")
-fun ImageView.setImageFromDrawable(imageDrawable: Drawable) {
-    Glide
-        .with(this)
-        .load(imageDrawable)
         .into(this)
 }

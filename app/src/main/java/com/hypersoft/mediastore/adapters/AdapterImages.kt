@@ -9,10 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.hypersoft.mediastore.R
 import com.hypersoft.mediastore.databinding.ItemImagesBinding
-import com.hypersoft.mediastore.databinding.ItemVideosBinding
 import com.hypersoft.mediastore.datamodel.ImageItem
 import com.hypersoft.mediastore.interfaces.OnImageClickListener
-import com.hypersoft.mediastore.interfaces.OnVideoClickListener
 
 class AdapterImages(private val listener: OnImageClickListener) :
     ListAdapter<ImageItem, RecyclerView.ViewHolder>(diffUtilImages) {
