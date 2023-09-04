@@ -107,7 +107,7 @@ class VideosViewModel : ViewModel() {
                             MediaStore.Video.Media.MIME_TYPE + " ='video/AVI' OR " +
                             MediaStore.Video.Media.MIME_TYPE + " ='video/MOV'"
 
-                    val orderBy = MediaStore.Video.Media.SIZE + " ASC"
+                    val orderBy = MediaStore.Video.Media.DATE_MODIFIED + " ASC"
 
                     val loaderCallbacks = object : LoaderManager.LoaderCallbacks<Cursor> {
                         override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
@@ -148,7 +148,7 @@ class VideosViewModel : ViewModel() {
                                             val mDateModified =
                                                 data.getLong(data.getColumnIndex(MediaStore.Video.Media.DATE_MODIFIED))
                                             val vdMimeType =
-                                                data.getString(data.getColumnIndex(MediaStore.Video.Media.MIME_TYPE))?:"Video"
+                                                data.getString(data.getColumnIndex(MediaStore.Video.Media.MIME_TYPE))?:"video"
                                             val vdPath =
                                                 data.getString(data.getColumnIndex(MediaStore.Video.Media.DATA))
 

@@ -35,12 +35,21 @@ fun ImageView.setImageFromResource(imageId: Int) {
         .load(imageId)
         .into(this)
 }
+@BindingAdapter("vdPath")
+fun ImageFilterView.setVideoFromPath(vdPath:String) {
+    Glide
+        .with(this)
+        .load(vdPath)
+        .placeholder(R.drawable.ic_video_placeholder)
+        .into(this)
+}
+
 @BindingAdapter("imagePath")
 fun ImageFilterView.setImageFromPath(imagePath:String) {
     Glide
         .with(this)
         .load(imagePath)
-        .placeholder(R.drawable.ic_video_placeholder)
+        .placeholder(R.drawable.ic_image_placeholder)
         .into(this)
 }
 

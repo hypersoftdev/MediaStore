@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
-            app:imagePath="@{item.videoPath}"
+            app:vdPath="@{item.videoPath}"
             app:round="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
