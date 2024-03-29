@@ -12,6 +12,13 @@ import com.hypersoft.mediastore.databinding.ItemImagesBinding
 import com.hypersoft.mediastore.datamodel.ImageItem
 import com.hypersoft.mediastore.interfaces.OnImageClickListener
 
+/**
+ * @Author: Muhammad Yaqoob
+ * @Date: 29,March,2024.
+ * @Accounts
+ *      -> https://github.com/orbitalsonic
+ *      -> https://www.linkedin.com/in/myaqoob7
+ */
 class AdapterImages(private val listener: OnImageClickListener) :
     ListAdapter<ImageItem, RecyclerView.ViewHolder>(diffUtilImages) {
 

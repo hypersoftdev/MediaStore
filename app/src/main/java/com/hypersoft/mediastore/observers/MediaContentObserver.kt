@@ -7,6 +7,13 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
 
+/**
+ * @Author: Muhammad Yaqoob
+ * @Date: 29,March,2024.
+ * @Accounts
+ *      -> https://github.com/orbitalsonic
+ *      -> https://www.linkedin.com/in/myaqoob7
+ */
 class MediaContentObserver(private val contentResolver: ContentResolver,private val mediaType:Uri, private val onChangeCallback: () -> Unit) : ContentObserver(
     Handler(Looper.getMainLooper())
 ) {

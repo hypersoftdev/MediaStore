@@ -14,6 +14,13 @@ import com.hypersoft.mediastore.di.DIComponent
 import com.hypersoft.mediastore.interfaces.OnVideoClickListener
 import com.hypersoft.mediastore.observers.MediaContentObserver
 
+/**
+ * @Author: Muhammad Yaqoob
+ * @Date: 29,March,2024.
+ * @Accounts
+ *      -> https://github.com/orbitalsonic
+ *      -> https://www.linkedin.com/in/myaqoob7
+ */
 class MediaStoreVideosActivity : AppCompatActivity(), OnVideoClickListener {
 
     private lateinit var binding: ActivityMediaStoreVideosBinding

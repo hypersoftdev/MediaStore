@@ -12,6 +12,13 @@ import com.hypersoft.mediastore.databinding.ItemVideosBinding
 import com.hypersoft.mediastore.datamodel.VideoItem
 import com.hypersoft.mediastore.interfaces.OnVideoClickListener
 
+/**
+ * @Author: Muhammad Yaqoob
+ * @Date: 29,March,2024.
+ * @Accounts
+ *      -> https://github.com/orbitalsonic
+ *      -> https://www.linkedin.com/in/myaqoob7
+ */
 class AdapterVideos(private val listener: OnVideoClickListener) :
     ListAdapter<VideoItem, RecyclerView.ViewHolder>(diffUtilVideos) {
 

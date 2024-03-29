@@ -6,6 +6,13 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.content.ContextCompat
 
+/**
+ * @Author: Muhammad Yaqoob
+ * @Date: 29,March,2024.
+ * @Accounts
+ *      -> https://github.com/orbitalsonic
+ *      -> https://www.linkedin.com/in/myaqoob7
+ */
 object PermissionUtils {
     val IMAGES_PERMISSIONS = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
         mutableListOf(
