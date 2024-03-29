@@ -12,6 +12,13 @@ import com.hypersoft.mediastore.databinding.ItemAudiosBinding
 import com.hypersoft.mediastore.datamodel.AudioItem
 import com.hypersoft.mediastore.interfaces.OnAudioClickListener
 
+/**
+ * @Author: Muhammad Yaqoob
+ * @Date: 29,March,2024.
+ * @Accounts
+ *      -> https://github.com/orbitalsonic
+ *      -> https://www.linkedin.com/in/myaqoob7
+ */
 class AdapterAudios(private val listener: OnAudioClickListener) :
     ListAdapter<AudioItem, RecyclerView.ViewHolder>(diffUtilAudio) {
 

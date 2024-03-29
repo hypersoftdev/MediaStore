@@ -26,6 +26,13 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.io.File
 
+/**
+ * @Author: Muhammad Yaqoob
+ * @Date: 29,March,2024.
+ * @Accounts
+ *      -> https://github.com/orbitalsonic
+ *      -> https://www.linkedin.com/in/myaqoob7
+ */
 class AudiosViewModel : ViewModel() {
 
     private val AUDIO_CODE = 66

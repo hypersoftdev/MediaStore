@@ -14,6 +14,13 @@ import com.hypersoft.mediastore.di.DIComponent
 import com.hypersoft.mediastore.interfaces.OnImageClickListener
 import com.hypersoft.mediastore.observers.MediaContentObserver
 
+/**
+ * @Author: Muhammad Yaqoob
+ * @Date: 29,March,2024.
+ * @Accounts
+ *      -> https://github.com/orbitalsonic
+ *      -> https://www.linkedin.com/in/myaqoob7
+ */
 class MediaStoreImagesActivity : AppCompatActivity(), OnImageClickListener {
 
     private lateinit var binding: ActivityMediaStoreImagesBinding

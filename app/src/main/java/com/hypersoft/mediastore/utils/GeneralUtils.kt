@@ -9,6 +9,13 @@ import java.util.Locale
 import kotlin.math.log10
 import kotlin.math.pow
 
+/**
+ * @Author: Muhammad Yaqoob
+ * @Date: 29,March,2024.
+ * @Accounts
+ *      -> https://github.com/orbitalsonic
+ *      -> https://www.linkedin.com/in/myaqoob7
+ */
 object GeneralUtils {
     fun readableFileSize(sizeStamp: Long): String {
         try {
